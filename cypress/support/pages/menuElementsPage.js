@@ -1,0 +1,82 @@
+// cypress/support/pages/menuElementsPage.js
+const el = require('../elements/menuElementsElements').menuElementsElements;
+
+class MenuElementsPage{
+
+    // Text Box
+    clicarTextBox(){
+        el.itemTextBox().should('be.visible').click();
+    }
+
+    preencherFormulario(usuario) {
+        el.nomeInput().should('be.visible').type(usuario.nome_completo);
+        el.emailInput().should('be.visible').type(usuario.email);
+        el.enderecoInput().should('be.visible').type(usuario.endereco);
+        el.confirmacaoEnderecoInput().should('be.visible').type(usuario.confirmacao_endereco);
+    }
+
+    submeterFormulario(){
+        el.submitButton().should('be.visible').click();
+    }
+    
+    validarDadosExibidos(usuarioEsperado) {
+        cy.get('#output').should('be.visible').within(() => {
+            cy.get('#name').should('have.text', `Name:${usuarioEsperado.nome_completo}`);
+            cy.get('#email').should('have.text', `Email:${usuarioEsperado.email}`);
+            cy.get('#currentAddress').should('contain', usuarioEsperado.endereco);
+            cy.get('#permanentAddress').should('contain', usuarioEsperado.confirmacao_endereco);
+        });
+    }
+
+    //Check Box
+    clicarCheckBox(){
+        el.itemChecktBox().should('be.visible').click();
+    }
+    
+    clicarCheckBoxHome(){
+        el.checkBoxHome().click();
+    }
+    
+    clicarCheckBoxDesktop(){
+        el.checkBoxDesktop().click();
+    }
+
+    clicarCheckBoxDownload(){
+        el.resultText().should('be.visible').invoke('text').then((textoResultado) => {
+        if (textoResultado.includes('You have selected :desktop notes commands')) {
+            el.checkBoxDownload().click();
+        } else {
+            cy.log('Nenhum item foi marcado');
+        }
+    });
+    }
+    
+    desmarcarCheckBoxHome(){
+        el.checkBoxHome().click();
+    }
+    
+    expandirCheckBox(){
+        el.setaHome().click();
+    }
+
+    // Radio Button
+    clicarRadioButton(){
+        el.itemRadioButton().should('be.visible').click();
+    }
+
+    clicarRadioYes(){
+        el.radioyes().should('be.visible').click();
+    }
+
+    clicaRadioImpressive(){
+        el.resultRadio().should('be.visible').invoke('text').then((textoResultado) => {
+        if (textoResultado.includes('You have selected Yes')) {
+            el.radioImpressive().click();
+        } else {
+            cy.log('Nenhum item foi marcado, por favor analise o sistema');
+        }
+    });
+    }
+
+}
+export default new MenuElementsPage();

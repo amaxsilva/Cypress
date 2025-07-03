@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "nome_completo": "João Silva",
+            "email": "joao.silva@exemplo.com",
+            "endereco": "Rua Exemplo, 123",
+            "confirmacao_endereco": "Rua Exemplo, 123"
+        },
+        {
+            "nome_completo": "Maria Souza",
+            "email": "maria.souza@exemplo.com",
+            "endereco": "Av. Teste, 456",
+            "confirmacao_endereco": "Av. Teste, 456"
+        }
+    ]
+}

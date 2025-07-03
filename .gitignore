@@ -1,0 +1,9 @@
+#dependencias
+/node_modules
+
+#evidencias
+cypress/videos
+cypress/screenshots
+
+#dados
+cypress.env.js
