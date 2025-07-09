@@ -78,5 +78,43 @@ class MenuElementsPage{
     });
     }
 
+    // Web Tables
+    clicarWebTables(){
+        el.itemWebTables().should('be.visible').click();
+    }
+
+    clicarAddButton(){
+        el.addButton().should('be.visible').click();
+    }
+
+    preencherFormularioWebTable(usuario) {
+        el.firstNameInput().should('be.visible').type(usuario.nome);
+        el.lastNameInput().should('be.visible').type(usuario.sobrenome);
+        el.emailWebTableInput().should('be.visible').type(usuario.email);
+        el.ageInput().should('be.visible').type(usuario.idade);
+        el.salaryInput().should('be.visible').type(usuario.salario);
+        el.departmentInput().should('be.visible').type(usuario.departamento);
+    }
+
+    submeterFormularioWebTable() {
+        el.submitWebTableButton().should('be.visible').click();
+    }
+
+    pesquisarItemWebTable(nome) {
+        el.searchWebTableInput().should('be.visible').clear().type(nome);
+    }
+
+    excluirItemWebTable() {
+        el.deleteButton().should('be.visible').click(); 
+    }
+
+    editarItemWebTable() {
+        el.editButton().should('be.visible').click();
+        el.firstNameInput().should('be.visible').clear().type('Ariel');
+    }
+
+    
+
+
 }
 export default new MenuElementsPage();
