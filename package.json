@@ -7,12 +7,13 @@
     "test": "cypress run"
   },
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^18.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@faker-js/faker": "^9.9.0",
     "cypress": "^13.0.0",
     "cypress-tags": "^1.2.2",
-    "esbuild": "^0.19.0"
+    "cypress-xpath": "^2.0.1",
+    "esbuild": "^0.25.9"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/support/step_definitions/**/*.{js,ts}",

@@ -33,3 +33,23 @@ Feature: Menu Elements
         And pesquisar o item criado
         And editar o item criado
         And excluir o item criado
+
+    @buttons
+    Scenario: Validar click nos botões
+        Given que acesso a demoqa
+        When clico no menu Elements
+        And cliclo na opção Buttons
+        Then sistema deve permitir clicar no botão Double Click Me
+        And clicar no botão Right Click Me
+        And clicar no botão Click Me
+
+    @links
+    Scenario Outline: Validar links em nova aba
+        Given que acesso a demoqa
+        When clico no menu Elements
+        And cliclo na opção Links
+        Then sistema deve permitir clicar no <'link'> e validar a <'url'>
+        Examples:
+            | link   | url                |
+            | Home   | https://demoqa.com |
+            | odHGd  | https://demoqa.com |

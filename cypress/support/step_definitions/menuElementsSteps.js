@@ -98,3 +98,31 @@ Then(`excluir o item criado`, () => {
         MenuElementsPage.excluirItemWebTable();
     });
 });
+
+//Buttons
+When(`cliclo na opção Buttons`, () => {
+    MenuElementsPage.clicarButtons();
+});
+
+Then(`sistema deve permitir clicar no botão Double Click Me`, () => {
+    MenuElementsPage.clicarDoubleClickMe();
+}); 
+
+Then(`clicar no botão Right Click Me`, () => {
+    MenuElementsPage.clicarRightClickMe();
+});
+
+Then(`clicar no botão Click Me`, () => {
+    MenuElementsPage.clicarClickMe();
+});
+
+//Links
+When(`cliclo na opção Links`, () => {
+    MenuElementsPage.clicarMenuLink();
+});
+
+Then(`sistema deve permitir clicar no {string} e validar a {string}`, (link, url) => {
+        MenuElementsPage.setupTabMock();
+        MenuElementsPage.clickLink(link);
+        MenuElementsPage.validateTabUrl(url);
+});

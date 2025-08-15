@@ -36,6 +36,18 @@ export const menuElementsElements = {
     editButton: () => cy.get('#edit-record-4'),
 
     //Buttons
+    itemButtons: () => cy.contains('.menu-list li span.text', 'Buttons').parent('li'),
+    doubleClickButton: () => cy.get('#doubleClickBtn'),
+    mensagemDoubleClick: () => cy.get('#doubleClickMessage'),
+    rightClickButton: () => cy.get('#rightClickBtn'),
+    mensagemRightClick: () => cy.get('#rightClickMessage'),
+    clickMeButton: () => cy.contains('button.btn-primary', 'Click Me').click(),
+    mensagemClickMe: () => cy.get('#dynamicClickMessage'),
+    
     //Link
+    itemLinks: () => cy.get('menu-list li span.text', 'Links').parent('li'),
+    linkHome: () => cy.get('#simpleLink'),
+    linkDynamic: () => cy.get('#dynamicLink'),
+    
 }
     

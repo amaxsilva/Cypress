@@ -113,8 +113,78 @@ class MenuElementsPage{
         el.firstNameInput().should('be.visible').clear().type('Ariel');
     }
 
-    
+    // Buttons
+    clicarButtons() {
+        el.itemButtons().should('be.visible').click();
+    }
 
+    clicarDoubleClickMe() {
+        el.doubleClickButton().should('be.visible').dblclick();
+    }   
+
+    validarMensagemDoubleClick() {
+        el.mensagemDoubleClick.should('be.visible').and('have.text', 'You have done a double click');   
+    }
+
+    clicarRightClickMe() {
+        el.rightClickButton().should('be.visible').rightclick();
+    }
+
+    validarMensagemRightClick() {
+        el.mensagemRightClick.should('be.visible').and('have.text', 'You have done a right click');
+    }
+
+    clicarClickMe() {
+        el.clickMeButton().should('be.visible').click();
+    }
+
+    validarMensagemClickMe() {
+        el.mensagemClickMe.should('be.visible').and('have.text', 'You have done a dynamic click');
+    }
+
+    // Link
+    clicarMenuLink() {
+        el.itemLinks().should('be.visible').click();
+    }
+
+    clicarLinkHome() {
+        el.linkHome().should('be.visible').click();
+    }
+
+    validarLinkHome() {
+        cy.url().should('include', 'https://demoqa.com/');
+    }
+
+    clicarLinkDynamic() {
+        el.linkDynamic().should('be.visible').click();
+    }
+
+    validarLinkDynamic() {
+        cy.url().should('include', 'https://demoqa.com/');
+    }
+
+    // Método para configurar o mock da nova aba
+    setupTabMock() {
+        cy.window().then((win) => {
+            cy.stub(win, 'open').as('windowOpen');
+        });
+    }
+
+  // Método para validar a URL mockada
+    validateTabUrl(expectedUrl) {
+        cy.get('@windowOpen').should('be.calledWith', expectedUrl);
+    }
+
+  // Método genérico para clicar em qualquer link (estático ou dinâmico)
+    clickLink(linkTextOrId) {
+        if (linkTextOrId === 'Home') {
+        // Link estático (exemplo: seleciona por texto)
+        cy.contains('a', 'Home').click();
+    } else {
+      // Link dinâmico (seleciona por ID fixo ou atributo)
+      cy.get('#dynamicLink').click(); // Ou: cy.contains('a', /^Home/).click()
+    }
+    }
 
 }
 export default new MenuElementsPage();
