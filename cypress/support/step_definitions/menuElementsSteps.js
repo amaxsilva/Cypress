@@ -122,7 +122,9 @@ When(`cliclo na opção Links`, () => {
 });
 
 Then(`sistema deve permitir clicar no {string} e validar a {string}`, (link, url) => {
-        MenuElementsPage.setupTabMock();
-        MenuElementsPage.clickLink(link);
-        MenuElementsPage.validateTabUrl(url);
+    MenuElementsPage.ValidandoLinkEUrl(link, url);
+});
+
+Then(`sistema deve permitir clicar no {string} e validar a mensagem {string}`, (linkAPI, mensagem) => {
+    MenuElementsPage.validandoUrlMensagem(linkAPI, mensagem);
 });

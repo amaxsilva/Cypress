@@ -45,9 +45,8 @@ export const menuElementsElements = {
     mensagemClickMe: () => cy.get('#dynamicClickMessage'),
     
     //Link
-    itemLinks: () => cy.get('menu-list li span.text', 'Links').parent('li'),
-    linkHome: () => cy.get('#simpleLink'),
-    linkDynamic: () => cy.get('#dynamicLink'),
+    itemLinks: () => cy.get(':nth-child(1) > .element-list > .menu-list > #item-5'),
+    linkMensagem: () => cy.get('#linkResponse'),
     
 }
     

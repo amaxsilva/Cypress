@@ -147,43 +147,14 @@ class MenuElementsPage{
         el.itemLinks().should('be.visible').click();
     }
 
-    clicarLinkHome() {
-        el.linkHome().should('be.visible').click();
+    ValidandoLinkEUrl(link, url) {
+        cy.contains('a', link).click();
+        cy.url().should('include', url);
     }
 
-    validarLinkHome() {
-        cy.url().should('include', 'https://demoqa.com/');
-    }
-
-    clicarLinkDynamic() {
-        el.linkDynamic().should('be.visible').click();
-    }
-
-    validarLinkDynamic() {
-        cy.url().should('include', 'https://demoqa.com/');
-    }
-
-    // Método para configurar o mock da nova aba
-    setupTabMock() {
-        cy.window().then((win) => {
-            cy.stub(win, 'open').as('windowOpen');
-        });
-    }
-
-  // Método para validar a URL mockada
-    validateTabUrl(expectedUrl) {
-        cy.get('@windowOpen').should('be.calledWith', expectedUrl);
-    }
-
-  // Método genérico para clicar em qualquer link (estático ou dinâmico)
-    clickLink(linkTextOrId) {
-        if (linkTextOrId === 'Home') {
-        // Link estático (exemplo: seleciona por texto)
-        cy.contains('a', 'Home').click();
-    } else {
-      // Link dinâmico (seleciona por ID fixo ou atributo)
-      cy.get('#dynamicLink').click(); // Ou: cy.contains('a', /^Home/).click()
-    }
+    validandoUrlMensagem(linkAPI, mensagem){
+        cy.contains('a', linkAPI).click();
+        el.linkMensagem().should('be.visible').and('have.text', mensagem);
     }
 
 }

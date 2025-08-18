@@ -48,8 +48,32 @@ Feature: Menu Elements
         Given que acesso a demoqa
         When clico no menu Elements
         And cliclo na opção Links
-        Then sistema deve permitir clicar no <'link'> e validar a <'url'>
+        Then sistema deve permitir clicar no "<link>" e validar a "<url>"
         Examples:
-            | link   | url                |
-            | Home   | https://demoqa.com |
-            | odHGd  | https://demoqa.com |
+            | link  | url                |
+            | Home  | https://demoqa.com |
+            | Home  | https://demoqa.com |
+
+    @linksAPI
+    Scenario Outline: Validar links de simulação de API
+        Given que acesso a demoqa
+        When clico no menu Elements
+        And cliclo na opção Links
+        Then sistema deve permitir clicar no "<linkAPI>" e validar a mensagem "<mensagem>"
+        Examples:
+            | linkAPI     | mensagem                                                           |
+            | Created     | Link has responded with staus 201 and status text Created          |
+            | No Content  | Link has responded with staus 204 and status text No Content       |
+            | Moved       | Link has responded with staus 301 and status text Moved Permanently|
+            | Bad Request | Link has responded with staus 400 and status text Bad Request      |
+            | Unauthorized| Link has responded with staus 401 and status text Unauthorized     |
+            | Forbidden   | Link has responded with staus 403 and status text Forbidden        |
+            | Not Found   | Link has responded with staus 404 and status text Not Found        |
+
+    @uploadDownload
+    Scenario: Validar upload e download de arquivos
+        Given que acesso a demoqa
+        When clico no menu Elements
+        And cliclo na opção Upload e Download
+        Then sistema deve permitir fazer o upload de um arquivo
+        And validar o download de um arquivo
